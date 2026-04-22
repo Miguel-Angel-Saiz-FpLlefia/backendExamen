@@ -6,7 +6,13 @@ import connectDB from "./config/db.js";
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowdHeaders: ["Content_Type", "Authorization"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/api/mascotas", mascotasRouter);
