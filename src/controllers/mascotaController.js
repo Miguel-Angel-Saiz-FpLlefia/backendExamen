@@ -49,7 +49,7 @@ async function crearMascota(req, res) {
       return res.json(400).json({ error: "Faltan datos por introducir" });
     }
     const mascota = await Mascota.create({ nombre, tipo, raza, foto });
-    res.status(201).json({ mascota: nova });
+    res.status(201).json({ mascota: mascota });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
