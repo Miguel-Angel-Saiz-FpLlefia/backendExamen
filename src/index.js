@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import mascotasRouter from "./routes/mascotasRoutes.js";
+import connectDB from "./config/db.js";
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.get("/api", (req, res) => {
 
 const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, () => {
-  console.log(`Servidor lanzado en el puerto ${PORT}`);
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Servidor lanzado en el puerto ${PORT}`);
+  });
 });
